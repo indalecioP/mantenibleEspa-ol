@@ -21,7 +21,11 @@ function App() {
     const results = event.results
     console.log(results)
     const frase = results[results.length - 1][0].transcript
-    setFra(frase)
+    if (frase == verbos.tener[fra] && fra < verbos.tener.length-1){
+      setFra(fra + 1)
+    } else{
+      alert('fin')
+    }
   }
 
   const grabar = () => { escucha.start() }
@@ -29,11 +33,11 @@ function App() {
   const abort = () => { escucha.abort() }
 
   return (
-    <div>
+    <div className='contenedor-principal'>
       <h1>curso de español</h1>
       <Mostrar frases={verbos.tener} hablar={hablar} />
-      <EscribirTodo frases={verbos.tener} hablar={hablar} />
-      <EscribirPalabra frases={verbos.tener} hablar={hablar} />
+      <EscribirTodo frases={verbos.tener} hablar={hablar} ide='et1' />
+      <EscribirPalabra frases={verbos.tener} hablar={hablar} ide='ep1'/>
       <Grabar grabar={grabar} abort={abort} />
       <p>{fra}</p>
     </div>

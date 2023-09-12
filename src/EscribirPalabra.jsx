@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
 
-export default function EscribirPalabra({frases,hablar}) {
+export default function EscribirPalabra({frases,hablar,ide}) {
 
     const [contador,setContador] = useState(-1)
     const [inicio,setInicio] = useState('')
@@ -11,13 +11,15 @@ export default function EscribirPalabra({frases,hablar}) {
             hablar(frases[contador])
             setInicio(ar[0])
             setFin(ar.slice(2,ar.length).join(' '))
-        } else {
+        } else if (contador != -1) {
+            let a = document.getElementById(ide)
+            a.remove()
             console.log('fin')
         }
     },[contador])
 
   return (
-    <div>
+    <div id={ide}>
         <button onClick={()=>setContador(contador + 1)}>empezar</button>
         <span>{inicio}</span>
         <input type="text" onChange={(e)=>{

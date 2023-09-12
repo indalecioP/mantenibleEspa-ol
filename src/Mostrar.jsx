@@ -11,8 +11,8 @@ export default function Mostrar({frases,hablar}) {
   return (
     <div>
         <button
-        onClick={()=>    
-            contador < frases.length-1 ? setContador(contador + 1) : console.log('fin')         
+        onClick={(e)=>    
+            contador < frases.length-1 ? setContador(contador + 1) : e.target.parentNode.remove()
         }>
             mostrar
         </button>
